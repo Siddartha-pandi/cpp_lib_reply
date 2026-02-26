@@ -314,7 +314,7 @@ TARGET        = FiringAnalysis
 first: all
 ####### Build rules
 
-FiringAnalysis: ui_mainwindow.h $(OBJECTS)  
+FiringAnalysis: ui_mainwindow.h ui_trajectoryview.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../../FiringAnalysis.pro ../../../Qt/6.10.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -813,7 +813,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../../../Qt/6.10.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../mainwindow.h ../../eventtablewidget.h ../../trajectoryview.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../eventtablewidget.cpp ../../trajectoryview.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../mainwindow.ui ../../trajectoryview.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1047,6 +1047,9 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
 		../../eventtablewidget.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidget \
@@ -1054,7 +1057,6 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtableview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -1073,10 +1075,6 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../trajectoryview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QListWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		moc_predefs.h \
 		../../../Qt/6.10.1/gcc_64/libexec/moc
 	/home/siddartha/Qt/6.10.1/gcc_64/libexec/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/Desktop_Qt_6_10_1-Debug/moc_predefs.h -I/home/siddartha/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/home/siddartha/Qt/6.10.1/gcc_64/include -I/home/siddartha/Qt/6.10.1/gcc_64/include/QtWidgets -I/home/siddartha/Qt/6.10.1/gcc_64/include/QtGui -I/home/siddartha/Qt/6.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../mainwindow.h -o moc_mainwindow.cpp
@@ -1505,34 +1503,6 @@ moc_trajectoryview.cpp: ../../trajectoryview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qguiapplication_platform.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QListWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/6.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../Qt/6.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../Qt/6.10.1/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt/6.10.1/gcc_64/include/QtCore/qregularexpression.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qslider.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstyle.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtablewidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtableview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayout.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		moc_predefs.h \
 		../../../Qt/6.10.1/gcc_64/libexec/moc
 	/home/siddartha/Qt/6.10.1/gcc_64/libexec/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/Desktop_Qt_6_10_1-Debug/moc_predefs.h -I/home/siddartha/Qt/6.10.1/gcc_64/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/home/siddartha/Qt/6.10.1/gcc_64/include -I/home/siddartha/Qt/6.10.1/gcc_64/include/QtWidgets -I/home/siddartha/Qt/6.10.1/gcc_64/include/QtGui -I/home/siddartha/Qt/6.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../trajectoryview.h -o moc_trajectoryview.cpp
@@ -1541,12 +1511,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_trajectoryview.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_trajectoryview.h
 ui_mainwindow.h: ../../mainwindow.ui \
 		../../../Qt/6.10.1/gcc_64/libexec/uic
 	/home/siddartha/Qt/6.10.1/gcc_64/libexec/uic ../../mainwindow.ui -o ui_mainwindow.h
+
+ui_trajectoryview.h: ../../trajectoryview.ui \
+		../../../Qt/6.10.1/gcc_64/libexec/uic
+	/home/siddartha/Qt/6.10.1/gcc_64/libexec/uic ../../trajectoryview.ui -o ui_trajectoryview.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1758,6 +1732,9 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
 		../../eventtablewidget.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidget \
@@ -1765,7 +1742,6 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtableview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -1784,10 +1760,6 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../trajectoryview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QListWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
@@ -1992,6 +1964,9 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
 		../../eventtablewidget.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidget \
@@ -1999,7 +1974,6 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtableview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -2018,13 +1992,27 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../trajectoryview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QListWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		ui_mainwindow.h \
+		../../../Qt/6.10.1/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.10.1/gcc_64/include/QtGui/QAction \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QColumnView \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qcolumnview.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.10.1/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.10.1/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QMenu \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qmenu.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QMenuBar \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QStatusBar \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/QDebug \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qfiledialog.h \
@@ -2040,15 +2028,7 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QMessageBox \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt/6.10.1/gcc_64/include/QtGui/QAction \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QStackedWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qstackedwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../Qt/6.10.1/gcc_64/include/QtGui/qpicture.h \
-		../../../Qt/6.10.1/gcc_64/include/QtGui/qtextdocument.h
+		../../../Qt/6.10.1/gcc_64/include/QtGui/QScreen
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
 
 eventtablewidget.o: ../../eventtablewidget.cpp ../../eventtablewidget.h \
@@ -2475,9 +2455,17 @@ trajectoryview.o: ../../trajectoryview.cpp ../../trajectoryview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qguiapplication_platform.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QListWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistview.h \
+		ui_trajectoryview.h \
+		../../../Qt/6.10.1/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qframe.h \
@@ -2494,22 +2482,19 @@ trajectoryview.o: ../../trajectoryview.cpp ../../trajectoryview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabbar.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidget \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtablewidget.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtableview.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayout.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHeaderView \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlabel.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qpicture.h \
 		../../../Qt/6.10.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QFrame
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QListWidget \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qlistview.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidget \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qtableview.h \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidgetItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trajectoryview.o ../../trajectoryview.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

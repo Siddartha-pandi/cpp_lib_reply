@@ -40,16 +40,18 @@ public:
     QAction *actionPrintEventView;
     QAction *actionPrintTrajectoryView;
     QWidget *centralwidget;
-    QHBoxLayout *mainHorizontalLayout;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_3;
+    QColumnView *TablePlot;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QColumnView *TubeSelect;
+    QColumnView *TrajectoryPlot;
+    QWidget *layoutWidget;
     QVBoxLayout *leftTableLayout;
-    QLabel *label_left_header;
-    QTableWidget *tableWidget_left;
+    QLabel *GeoInfo;
+    QTableWidget *GeoInfoTable;
     QSpacerItem *verticalSpacer;
-    QVBoxLayout *rightVerticalLayout;
-    QHBoxLayout *rightTopLayout;
-    QColumnView *columnView_2;
-    QColumnView *columnView;
-    QColumnView *columnView_3;
     QMenuBar *menubar;
     QMenu *menuFIle;
     QMenu *menuView;
@@ -61,7 +63,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1635, 943);
+        MainWindow->resize(1200, 1600);
+        MainWindow->setMaximumSize(QSize(16777215, 16777215));
         actionFileOpen = new QAction(MainWindow);
         actionFileOpen->setObjectName("actionFileOpen");
         actionFileClose = new QAction(MainWindow);
@@ -82,148 +85,130 @@ public:
         actionPrintTrajectoryView->setObjectName("actionPrintTrajectoryView");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        mainHorizontalLayout = new QHBoxLayout(centralwidget);
-        mainHorizontalLayout->setSpacing(10);
-        mainHorizontalLayout->setObjectName("mainHorizontalLayout");
-        mainHorizontalLayout->setContentsMargins(10, 10, 10, 10);
-        leftTableLayout = new QVBoxLayout();
+        horizontalLayoutWidget_2 = new QWidget(centralwidget);
+        horizontalLayoutWidget_2->setObjectName("horizontalLayoutWidget_2");
+        horizontalLayoutWidget_2->setGeometry(QRect(300, 460, 881, 471));
+        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_2);
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        TablePlot = new QColumnView(horizontalLayoutWidget_2);
+        TablePlot->setObjectName("TablePlot");
+
+        horizontalLayout_3->addWidget(TablePlot);
+
+        horizontalLayoutWidget = new QWidget(centralwidget);
+        horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
+        horizontalLayoutWidget->setGeometry(QRect(300, 10, 881, 441));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        TubeSelect = new QColumnView(horizontalLayoutWidget);
+        TubeSelect->setObjectName("TubeSelect");
+        TubeSelect->setMaximumSize(QSize(150, 16777215));
+
+        horizontalLayout->addWidget(TubeSelect);
+
+        TrajectoryPlot = new QColumnView(horizontalLayoutWidget);
+        TrajectoryPlot->setObjectName("TrajectoryPlot");
+
+        horizontalLayout->addWidget(TrajectoryPlot);
+
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(10, 10, 282, 921));
+        leftTableLayout = new QVBoxLayout(layoutWidget);
         leftTableLayout->setObjectName("leftTableLayout");
-        label_left_header = new QLabel(centralwidget);
-        label_left_header->setObjectName("label_left_header");
-        label_left_header->setMinimumSize(QSize(0, 30));
-        label_left_header->setMaximumSize(QSize(400, 30));
-        label_left_header->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 87, 83); color: white; font-weight: bold; padding-left: 5px;"));
-        label_left_header->setTextFormat(Qt::TextFormat::AutoText);
-        label_left_header->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        label_left_header->setMargin(-3);
-        label_left_header->setIndent(0);
+        leftTableLayout->setContentsMargins(0, 0, 0, 0);
+        GeoInfo = new QLabel(layoutWidget);
+        GeoInfo->setObjectName("GeoInfo");
+        GeoInfo->setMinimumSize(QSize(0, 30));
+        GeoInfo->setMaximumSize(QSize(400, 30));
+        GeoInfo->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 87, 83); color: white; font-weight: bold; padding-left: 5px;"));
+        GeoInfo->setTextFormat(Qt::TextFormat::AutoText);
+        GeoInfo->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        GeoInfo->setMargin(-3);
+        GeoInfo->setIndent(0);
 
-        leftTableLayout->addWidget(label_left_header);
+        leftTableLayout->addWidget(GeoInfo);
 
-        tableWidget_left = new QTableWidget(centralwidget);
-        if (tableWidget_left->columnCount() < 2)
-            tableWidget_left->setColumnCount(2);
-        if (tableWidget_left->rowCount() < 7)
-            tableWidget_left->setRowCount(7);
+        GeoInfoTable = new QTableWidget(layoutWidget);
+        if (GeoInfoTable->columnCount() < 2)
+            GeoInfoTable->setColumnCount(2);
+        if (GeoInfoTable->rowCount() < 7)
+            GeoInfoTable->setRowCount(7);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         __qtablewidgetitem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(0, 0, __qtablewidgetitem);
+        GeoInfoTable->setItem(0, 0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         __qtablewidgetitem1->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(1, 0, __qtablewidgetitem1);
+        GeoInfoTable->setItem(1, 0, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         __qtablewidgetitem2->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(2, 0, __qtablewidgetitem2);
+        GeoInfoTable->setItem(2, 0, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         __qtablewidgetitem3->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(3, 0, __qtablewidgetitem3);
+        GeoInfoTable->setItem(3, 0, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
         __qtablewidgetitem4->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(4, 0, __qtablewidgetitem4);
+        GeoInfoTable->setItem(4, 0, __qtablewidgetitem4);
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
         __qtablewidgetitem5->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(5, 0, __qtablewidgetitem5);
+        GeoInfoTable->setItem(5, 0, __qtablewidgetitem5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
         __qtablewidgetitem6->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        tableWidget_left->setItem(6, 0, __qtablewidgetitem6);
-        tableWidget_left->setObjectName("tableWidget_left");
+        GeoInfoTable->setItem(6, 0, __qtablewidgetitem6);
+        GeoInfoTable->setObjectName("GeoInfoTable");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(tableWidget_left->sizePolicy().hasHeightForWidth());
-        tableWidget_left->setSizePolicy(sizePolicy);
-        tableWidget_left->setMinimumSize(QSize(280, 9));
-        tableWidget_left->setMaximumSize(QSize(400, 16777215));
-        tableWidget_left->setStyleSheet(QString::fromUtf8("QTableWidget { \n"
-"  gridline-color: rgb(186, 189, 182);\n"
+        sizePolicy.setHeightForWidth(GeoInfoTable->sizePolicy().hasHeightForWidth());
+        GeoInfoTable->setSizePolicy(sizePolicy);
+        GeoInfoTable->setMinimumSize(QSize(280, 9));
+        GeoInfoTable->setMaximumSize(QSize(400, 16777215));
+        GeoInfoTable->setStyleSheet(QString::fromUtf8("QTableWidget { \n"
+"  gridline-color: rgba(255, 255, 255, 0);\n"
+"  border: 1px solid rgba(0, 17, 255, 0.47);\n"
 "}\n"
 "QTableWidget::item {\n"
 "  padding: 5px;\n"
+"  border: 1px solid rgb(3, 95, 180);\n"
+"  color: rgb(255, 255, 255);\n"
 "}"));
-        tableWidget_left->setFrameShape(QFrame::Shape::NoFrame);
-        tableWidget_left->setFrameShadow(QFrame::Shadow::Raised);
-        tableWidget_left->setLineWidth(0);
-        tableWidget_left->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-        tableWidget_left->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-        tableWidget_left->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContentsOnFirstShow);
-        tableWidget_left->setAutoScrollMargin(13);
-        tableWidget_left->setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
-        tableWidget_left->setAlternatingRowColors(true);
-        tableWidget_left->setShowGrid(true);
-        tableWidget_left->setGridStyle(Qt::PenStyle::SolidLine);
-        tableWidget_left->setRowCount(7);
-        tableWidget_left->setColumnCount(2);
-        tableWidget_left->horizontalHeader()->setVisible(false);
-        tableWidget_left->horizontalHeader()->setMinimumSectionSize(18);
-        tableWidget_left->horizontalHeader()->setDefaultSectionSize(100);
-        tableWidget_left->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
-        tableWidget_left->horizontalHeader()->setStretchLastSection(true);
-        tableWidget_left->verticalHeader()->setVisible(false);
-        tableWidget_left->verticalHeader()->setCascadingSectionResizes(false);
-        tableWidget_left->verticalHeader()->setDefaultSectionSize(23);
-        tableWidget_left->verticalHeader()->setHighlightSections(true);
-        tableWidget_left->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
-        tableWidget_left->verticalHeader()->setStretchLastSection(false);
+        GeoInfoTable->setFrameShape(QFrame::Shape::NoFrame);
+        GeoInfoTable->setFrameShadow(QFrame::Shadow::Raised);
+        GeoInfoTable->setLineWidth(0);
+        GeoInfoTable->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+        GeoInfoTable->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+        GeoInfoTable->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContentsOnFirstShow);
+        GeoInfoTable->setAutoScrollMargin(13);
+        GeoInfoTable->setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
+        GeoInfoTable->setAlternatingRowColors(true);
+        GeoInfoTable->setShowGrid(true);
+        GeoInfoTable->setGridStyle(Qt::PenStyle::SolidLine);
+        GeoInfoTable->setRowCount(7);
+        GeoInfoTable->setColumnCount(2);
+        GeoInfoTable->horizontalHeader()->setVisible(false);
+        GeoInfoTable->horizontalHeader()->setMinimumSectionSize(18);
+        GeoInfoTable->horizontalHeader()->setDefaultSectionSize(100);
+        GeoInfoTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
+        GeoInfoTable->horizontalHeader()->setStretchLastSection(true);
+        GeoInfoTable->verticalHeader()->setVisible(false);
+        GeoInfoTable->verticalHeader()->setCascadingSectionResizes(false);
+        GeoInfoTable->verticalHeader()->setDefaultSectionSize(23);
+        GeoInfoTable->verticalHeader()->setHighlightSections(true);
+        GeoInfoTable->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
+        GeoInfoTable->verticalHeader()->setStretchLastSection(false);
 
-        leftTableLayout->addWidget(tableWidget_left);
+        leftTableLayout->addWidget(GeoInfoTable, 0, Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         leftTableLayout->addItem(verticalSpacer);
 
-
-        mainHorizontalLayout->addLayout(leftTableLayout);
-
-        rightVerticalLayout = new QVBoxLayout();
-        rightVerticalLayout->setObjectName("rightVerticalLayout");
-        rightTopLayout = new QHBoxLayout();
-        rightTopLayout->setSpacing(5);
-        rightTopLayout->setObjectName("rightTopLayout");
-        columnView_2 = new QColumnView(centralwidget);
-        columnView_2->setObjectName("columnView_2");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(columnView_2->sizePolicy().hasHeightForWidth());
-        columnView_2->setSizePolicy(sizePolicy1);
-        columnView_2->setMinimumSize(QSize(80, 0));
-        columnView_2->setMaximumSize(QSize(150, 16777215));
-
-        rightTopLayout->addWidget(columnView_2);
-
-        columnView = new QColumnView(centralwidget);
-        columnView->setObjectName("columnView");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
-        sizePolicy2.setHorizontalStretch(1);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(columnView->sizePolicy().hasHeightForWidth());
-        columnView->setSizePolicy(sizePolicy2);
-
-        rightTopLayout->addWidget(columnView);
-
-
-        rightVerticalLayout->addLayout(rightTopLayout);
-
-        columnView_3 = new QColumnView(centralwidget);
-        columnView_3->setObjectName("columnView_3");
-        QSizePolicy sizePolicy3(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(1);
-        sizePolicy3.setHeightForWidth(columnView_3->sizePolicy().hasHeightForWidth());
-        columnView_3->setSizePolicy(sizePolicy3);
-        columnView_3->setFrameShape(QFrame::Shape::StyledPanel);
-        columnView_3->setFrameShadow(QFrame::Shadow::Raised);
-        columnView_3->setLineWidth(0);
-
-        rightVerticalLayout->addWidget(columnView_3);
-
-
-        mainHorizontalLayout->addLayout(rightVerticalLayout);
-
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1635, 23));
+        menubar->setGeometry(QRect(0, 0, 1200, 23));
         menuFIle = new QMenu(menubar);
         menuFIle->setObjectName("menuFIle");
         menuFIle->setAutoFillBackground(true);
@@ -279,25 +264,25 @@ public:
         actionPrintParameterView->setText(QCoreApplication::translate("MainWindow", "Parameter View", nullptr));
         actionPrintEventView->setText(QCoreApplication::translate("MainWindow", "Event View", nullptr));
         actionPrintTrajectoryView->setText(QCoreApplication::translate("MainWindow", "Trajectory View", nullptr));
-        label_left_header->setText(QCoreApplication::translate("MainWindow", "Geographical information", nullptr));
+        GeoInfo->setText(QCoreApplication::translate("MainWindow", "Geographical information", nullptr));
 
-        const bool __sortingEnabled = tableWidget_left->isSortingEnabled();
-        tableWidget_left->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem = tableWidget_left->item(0, 0);
+        const bool __sortingEnabled = GeoInfoTable->isSortingEnabled();
+        GeoInfoTable->setSortingEnabled(false);
+        QTableWidgetItem *___qtablewidgetitem = GeoInfoTable->item(0, 0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Current Selected Time", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget_left->item(1, 0);
+        QTableWidgetItem *___qtablewidgetitem1 = GeoInfoTable->item(1, 0);
         ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Ownship / Torpedo Bearing", nullptr));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget_left->item(2, 0);
+        QTableWidgetItem *___qtablewidgetitem2 = GeoInfoTable->item(2, 0);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Ownship / Torpedo Range", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget_left->item(3, 0);
+        QTableWidgetItem *___qtablewidgetitem3 = GeoInfoTable->item(3, 0);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Ownship / Target Bearing", nullptr));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget_left->item(4, 0);
+        QTableWidgetItem *___qtablewidgetitem4 = GeoInfoTable->item(4, 0);
         ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "Ownship / Target Range", nullptr));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget_left->item(5, 0);
+        QTableWidgetItem *___qtablewidgetitem5 = GeoInfoTable->item(5, 0);
         ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "Torpedo / Target Bearing", nullptr));
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget_left->item(6, 0);
+        QTableWidgetItem *___qtablewidgetitem6 = GeoInfoTable->item(6, 0);
         ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "Torpedo / Target Range", nullptr));
-        tableWidget_left->setSortingEnabled(__sortingEnabled);
+        GeoInfoTable->setSortingEnabled(__sortingEnabled);
 
         menuFIle->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuView->setTitle(QCoreApplication::translate("MainWindow", "View", nullptr));
