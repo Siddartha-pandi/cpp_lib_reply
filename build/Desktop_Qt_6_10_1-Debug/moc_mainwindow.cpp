@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../mainwindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -42,7 +43,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onFileOpen",
         "",
         "onFileClose",
-        "onFileExit",
+        "onFileParser",
         "onViewParameter",
         "onViewEvent",
         "onViewTrajectory",
@@ -58,7 +59,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onFileClose'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onFileExit'
+        // Slot 'onFileParser'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onViewParameter'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
@@ -101,7 +102,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->onFileOpen(); break;
         case 1: _t->onFileClose(); break;
-        case 2: _t->onFileExit(); break;
+        case 2: _t->onFileParser(); break;
         case 3: _t->onViewParameter(); break;
         case 4: _t->onViewEvent(); break;
         case 5: _t->onViewTrajectory(); break;
