@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++1z -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../FiringAnalysis -I. -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I../../FiringAnalysis -I. -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -Ibuild/moc -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = FiringAnalysis1.0.0
-DISTDIR = /home/siddartha/FiringAnalysis/build/.tmp/FiringAnalysis1.0.0
+DISTDIR = /home/siddartha/FiringAnalysis/build/build/obj/FiringAnalysis1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
@@ -48,24 +48,55 @@ STRIP         = strip
 
 ####### Output directory
 
-OBJECTS_DIR   = ./
+OBJECTS_DIR   = build/obj/
 
 ####### Files
 
 SOURCES       = ../main.cpp \
-		../mainwindow.cpp \
-		../eventtablewidget.cpp \
-		../trajectoryview.cpp moc_mainwindow.cpp \
-		moc_eventtablewidget.cpp \
-		moc_trajectoryview.cpp
-OBJECTS       = main.o \
-		mainwindow.o \
-		eventtablewidget.o \
-		trajectoryview.o \
-		moc_mainwindow.o \
-		moc_eventtablewidget.o \
-		moc_trajectoryview.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+		../home.cpp \
+		../parser.cpp \
+		../parserdialog.cpp \
+		../eventview.cpp \
+		../parametrview.cpp \
+		../trajectoryview.cpp \
+		../geographicalinfo.cpp \
+		../acousticpanorama.cpp \
+		../demongraph.cpp \
+		../trajectorytable.cpp \
+		../parameterinfotree.cpp build/moc/moc_home.cpp \
+		build/moc/moc_eventview.cpp \
+		build/moc/moc_parametrview.cpp \
+		build/moc/moc_trajectoryview.cpp \
+		build/moc/moc_geographicalinfo.cpp \
+		build/moc/moc_acousticpanorama.cpp \
+		build/moc/moc_demongraph.cpp \
+		build/moc/moc_parameterinfotree.cpp \
+		build/moc/moc_trajectorytable.cpp
+OBJECTS       = build/obj/main.o \
+		build/obj/home.o \
+		build/obj/parser.o \
+		build/obj/parserdialog.o \
+		build/obj/eventview.o \
+		build/obj/parametrview.o \
+		build/obj/trajectoryview.o \
+		build/obj/geographicalinfo.o \
+		build/obj/acousticpanorama.o \
+		build/obj/demongraph.o \
+		build/obj/trajectorytable.o \
+		build/obj/parameterinfotree.o \
+		build/obj/moc_home.o \
+		build/obj/moc_eventview.o \
+		build/obj/moc_parametrview.o \
+		build/obj/moc_trajectoryview.o \
+		build/obj/moc_geographicalinfo.o \
+		build/obj/moc_acousticpanorama.o \
+		build/obj/moc_demongraph.o \
+		build/obj/moc_parameterinfotree.o \
+		build/obj/moc_trajectorytable.o
+DIST          = ../README.md \
+		../parser.cpp \
+		../parser.h \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -74,6 +105,30 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-base.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3danimation.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3danimation_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dcore.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dcore_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dextras.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dextras_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dinput.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dinput_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dlogic.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquick.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquick_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickextras.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickinput.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickrender.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3drender.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3drender_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri \
@@ -105,6 +160,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_serialport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri \
@@ -118,6 +174,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xkbcommon_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_functions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
@@ -142,12 +199,29 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../../FiringAnalysis.pro ../mainwindow.h \
-		../eventtablewidget.h \
-		../trajectoryview.h ../main.cpp \
-		../mainwindow.cpp \
-		../eventtablewidget.cpp \
-		../trajectoryview.cpp
+		../../FiringAnalysis.pro ../parser.h \
+		../parser_format_config.h \
+		../parserdialog.h \
+		../home.h \
+		../eventview.h \
+		../parametrview.h \
+		../trajectoryview.h \
+		../geographicalinfo.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		../parameterinfotree.h \
+		../trajectorytable.h ../main.cpp \
+		../home.cpp \
+		../parser.cpp \
+		../parserdialog.cpp \
+		../eventview.cpp \
+		../parametrview.cpp \
+		../trajectoryview.cpp \
+		../geographicalinfo.cpp \
+		../acousticpanorama.cpp \
+		../demongraph.cpp \
+		../trajectorytable.cpp \
+		../parameterinfotree.cpp
 QMAKE_TARGET  = FiringAnalysis
 DESTDIR       = 
 TARGET        = FiringAnalysis
@@ -156,7 +230,7 @@ TARGET        = FiringAnalysis
 first: all
 ####### Build rules
 
-FiringAnalysis: ui_mainwindow.h $(OBJECTS)  
+FiringAnalysis:  $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -168,6 +242,30 @@ Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-base.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3danimation.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3danimation_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dcore.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dcore_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dextras.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dextras_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dinput.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dinput_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dlogic.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquick.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquick_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickextras.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickinput.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickrender.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3drender.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3drender_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri \
@@ -199,6 +297,7 @@ Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_serialport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri \
@@ -212,6 +311,7 @@ Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xkbcommon_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_functions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
@@ -247,6 +347,30 @@ Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-base.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3danimation.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3danimation_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dcore.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dcore_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dextras.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dextras_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dinput.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dinput_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dlogic.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquick.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquick_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickextras.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickinput.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickrender.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3drender.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_3drender_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri:
@@ -278,6 +402,7 @@ Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_serialport.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri:
@@ -291,6 +416,7 @@ Makefile: ../FiringAnalysis.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xkbcommon_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xml_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_functions.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
@@ -331,9 +457,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../mainwindow.h ../eventtablewidget.h ../trajectoryview.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../eventtablewidget.cpp ../trajectoryview.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../parser.h ../parser_format_config.h ../parserdialog.h ../home.h ../eventview.h ../parametrview.h ../trajectoryview.h ../geographicalinfo.h ../acousticpanorama.h ../demongraph.h ../parameterinfotree.h ../trajectorytable.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../home.cpp ../parser.cpp ../parserdialog.cpp ../eventview.cpp ../parametrview.cpp ../trajectoryview.cpp ../geographicalinfo.cpp ../acousticpanorama.cpp ../demongraph.cpp ../trajectorytable.cpp ../parameterinfotree.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -359,78 +484,184 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_predefs_make_all: moc_predefs.h
+compiler_moc_predefs_make_all: build/moc/moc_predefs.h
 compiler_moc_predefs_clean:
-	-$(DEL_FILE) moc_predefs.h
-moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
-	g++ -pipe -O2 -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
+	-$(DEL_FILE) build/moc/moc_predefs.h
+build/moc/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
+	g++ -pipe -O2 -std=gnu++1z -Wall -Wextra -dM -E -o build/moc/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_eventtablewidget.cpp moc_trajectoryview.cpp
+compiler_moc_header_make_all: build/moc/moc_home.cpp build/moc/moc_eventview.cpp build/moc/moc_parametrview.cpp build/moc/moc_trajectoryview.cpp build/moc/moc_geographicalinfo.cpp build/moc/moc_acousticpanorama.cpp build/moc/moc_demongraph.cpp build/moc/moc_parameterinfotree.cpp build/moc/moc_trajectorytable.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_eventtablewidget.cpp moc_trajectoryview.cpp
-moc_mainwindow.cpp: ../mainwindow.h \
-		../eventtablewidget.h \
+	-$(DEL_FILE) build/moc/moc_home.cpp build/moc/moc_eventview.cpp build/moc/moc_parametrview.cpp build/moc/moc_trajectoryview.cpp build/moc/moc_geographicalinfo.cpp build/moc/moc_acousticpanorama.cpp build/moc/moc_demongraph.cpp build/moc/moc_parameterinfotree.cpp build/moc/moc_trajectorytable.cpp
+build/moc/moc_home.cpp: ../home.h \
+		../eventview.h \
+		../parametrview.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		../geographicalinfo.h \
+		../parameterinfotree.h \
 		../trajectoryview.h \
-		moc_predefs.h \
+		../trajectorytable.h \
+		../parserdialog.h \
+		build/moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../home.h -o build/moc/moc_home.cpp
 
-moc_eventtablewidget.cpp: ../eventtablewidget.h \
-		moc_predefs.h \
+build/moc/moc_eventview.cpp: ../eventview.h \
+		build/moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../eventtablewidget.h -o moc_eventtablewidget.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../eventview.h -o build/moc/moc_eventview.cpp
 
-moc_trajectoryview.cpp: ../trajectoryview.h \
-		moc_predefs.h \
+build/moc/moc_parametrview.cpp: ../parametrview.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		../geographicalinfo.h \
+		../parameterinfotree.h \
+		build/moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../trajectoryview.h -o moc_trajectoryview.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../parametrview.h -o build/moc/moc_parametrview.cpp
+
+build/moc/moc_trajectoryview.cpp: ../trajectoryview.h \
+		../geographicalinfo.h \
+		../trajectorytable.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		build/moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../trajectoryview.h -o build/moc/moc_trajectoryview.cpp
+
+build/moc/moc_geographicalinfo.cpp: ../geographicalinfo.h \
+		build/moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../geographicalinfo.h -o build/moc/moc_geographicalinfo.cpp
+
+build/moc/moc_acousticpanorama.cpp: ../acousticpanorama.h \
+		build/moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../acousticpanorama.h -o build/moc/moc_acousticpanorama.cpp
+
+build/moc/moc_demongraph.cpp: ../demongraph.h \
+		build/moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../demongraph.h -o build/moc/moc_demongraph.cpp
+
+build/moc/moc_parameterinfotree.cpp: ../parameterinfotree.h \
+		build/moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../parameterinfotree.h -o build/moc/moc_parameterinfotree.cpp
+
+build/moc/moc_trajectorytable.cpp: ../trajectorytable.h \
+		build/moc/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/siddartha/FiringAnalysis/build/build/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/siddartha/FiringAnalysis -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../trajectorytable.h -o build/moc/moc_trajectorytable.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all:
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: ../mainwindow.ui \
-		/usr/lib/qt5/bin/uic
-	/usr/lib/qt5/bin/uic ../mainwindow.ui -o ui_mainwindow.h
-
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
-main.o: ../main.cpp ../mainwindow.h \
-		../eventtablewidget.h \
-		../trajectoryview.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
-
-mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
-		../eventtablewidget.h \
+build/obj/main.o: ../main.cpp ../home.h \
+		../eventview.h \
+		../parametrview.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		../geographicalinfo.h \
+		../parameterinfotree.h \
 		../trajectoryview.h \
-		ui_mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../mainwindow.cpp
+		../trajectorytable.h \
+		../parserdialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o ../main.cpp
 
-eventtablewidget.o: ../eventtablewidget.cpp ../eventtablewidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o eventtablewidget.o ../eventtablewidget.cpp
+build/obj/home.o: ../home.cpp ../home.h \
+		../eventview.h \
+		../parametrview.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		../geographicalinfo.h \
+		../parameterinfotree.h \
+		../trajectoryview.h \
+		../trajectorytable.h \
+		../parserdialog.h \
+		../parser.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/home.o ../home.cpp
 
-trajectoryview.o: ../trajectoryview.cpp ../trajectoryview.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trajectoryview.o ../trajectoryview.cpp
+build/obj/parser.o: ../parser.cpp ../parser.h \
+		../parser_format_config.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/parser.o ../parser.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+build/obj/parserdialog.o: ../parserdialog.cpp ../parserdialog.h \
+		../parser.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/parserdialog.o ../parserdialog.cpp
 
-moc_eventtablewidget.o: moc_eventtablewidget.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_eventtablewidget.o moc_eventtablewidget.cpp
+build/obj/eventview.o: ../eventview.cpp ../eventview.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/eventview.o ../eventview.cpp
 
-moc_trajectoryview.o: moc_trajectoryview.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_trajectoryview.o moc_trajectoryview.cpp
+build/obj/parametrview.o: ../parametrview.cpp ../parametrview.h \
+		../acousticpanorama.h \
+		../demongraph.h \
+		../geographicalinfo.h \
+		../parameterinfotree.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/parametrview.o ../parametrview.cpp
+
+build/obj/trajectoryview.o: ../trajectoryview.cpp ../trajectoryview.h \
+		../geographicalinfo.h \
+		../trajectorytable.h \
+		../acousticpanorama.h \
+		../demongraph.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/trajectoryview.o ../trajectoryview.cpp
+
+build/obj/geographicalinfo.o: ../geographicalinfo.cpp ../geographicalinfo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/geographicalinfo.o ../geographicalinfo.cpp
+
+build/obj/acousticpanorama.o: ../acousticpanorama.cpp ../acousticpanorama.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/acousticpanorama.o ../acousticpanorama.cpp
+
+build/obj/demongraph.o: ../demongraph.cpp ../demongraph.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/demongraph.o ../demongraph.cpp
+
+build/obj/trajectorytable.o: ../trajectorytable.cpp ../trajectorytable.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/trajectorytable.o ../trajectorytable.cpp
+
+build/obj/parameterinfotree.o: ../parameterinfotree.cpp ../parameterinfotree.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/parameterinfotree.o ../parameterinfotree.cpp
+
+build/obj/moc_home.o: build/moc/moc_home.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_home.o build/moc/moc_home.cpp
+
+build/obj/moc_eventview.o: build/moc/moc_eventview.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_eventview.o build/moc/moc_eventview.cpp
+
+build/obj/moc_parametrview.o: build/moc/moc_parametrview.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_parametrview.o build/moc/moc_parametrview.cpp
+
+build/obj/moc_trajectoryview.o: build/moc/moc_trajectoryview.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_trajectoryview.o build/moc/moc_trajectoryview.cpp
+
+build/obj/moc_geographicalinfo.o: build/moc/moc_geographicalinfo.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_geographicalinfo.o build/moc/moc_geographicalinfo.cpp
+
+build/obj/moc_acousticpanorama.o: build/moc/moc_acousticpanorama.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_acousticpanorama.o build/moc/moc_acousticpanorama.cpp
+
+build/obj/moc_demongraph.o: build/moc/moc_demongraph.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_demongraph.o build/moc/moc_demongraph.cpp
+
+build/obj/moc_parameterinfotree.o: build/moc/moc_parameterinfotree.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_parameterinfotree.o build/moc/moc_parameterinfotree.cpp
+
+build/obj/moc_trajectorytable.o: build/moc/moc_trajectorytable.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_trajectorytable.o build/moc/moc_trajectorytable.cpp
 
 ####### Install
 
