@@ -64,8 +64,7 @@ SOURCES       = ../../main.cpp \
 		../../demongraph.cpp \
 		../../trajectorytable.cpp \
 		../../parameterinfotree.cpp \
-		../../replyscreen.cpp \
-		../../simulator.cpp build/moc/moc_home.cpp \
+		../../replyscreen.cpp build/moc/moc_home.cpp \
 		build/moc/moc_eventview.cpp \
 		build/moc/moc_parametrview.cpp \
 		build/moc/moc_trajectoryview.cpp \
@@ -88,7 +87,6 @@ OBJECTS       = build/obj/main.o \
 		build/obj/trajectorytable.o \
 		build/obj/parameterinfotree.o \
 		build/obj/replyscreen.o \
-		build/obj/simulator.o \
 		build/obj/moc_home.o \
 		build/obj/moc_eventview.o \
 		build/obj/moc_parametrview.o \
@@ -349,8 +347,7 @@ DIST          = ../../README.md \
 		../../demongraph.h \
 		../../parameterinfotree.h \
 		../../trajectorytable.h \
-		../../replyscreen.h \
-		../../simulator.h ../../main.cpp \
+		../../replyscreen.h ../../main.cpp \
 		../../home.cpp \
 		../../parser.cpp \
 		../../parserdialog.cpp \
@@ -362,8 +359,7 @@ DIST          = ../../README.md \
 		../../demongraph.cpp \
 		../../trajectorytable.cpp \
 		../../parameterinfotree.cpp \
-		../../replyscreen.cpp \
-		../../simulator.cpp
+		../../replyscreen.cpp
 QMAKE_TARGET  = FiringAnalysis
 DESTDIR       = 
 TARGET        = FiringAnalysis
@@ -869,8 +865,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/6.10.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../parser.h ../../parser_format_config.h ../../parserdialog.h ../../home.h ../../eventview.h ../../parametrview.h ../../trajectoryview.h ../../geographicalinfo.h ../../acousticpanorama.h ../../demongraph.h ../../parameterinfotree.h ../../trajectorytable.h ../../replyscreen.h ../../simulator.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../home.cpp ../../parser.cpp ../../parserdialog.cpp ../../eventview.cpp ../../parametrview.cpp ../../trajectoryview.cpp ../../geographicalinfo.cpp ../../acousticpanorama.cpp ../../demongraph.cpp ../../trajectorytable.cpp ../../parameterinfotree.cpp ../../replyscreen.cpp ../../simulator.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../parser.h ../../parser_format_config.h ../../parserdialog.h ../../home.h ../../eventview.h ../../parametrview.h ../../trajectoryview.h ../../geographicalinfo.h ../../acousticpanorama.h ../../demongraph.h ../../parameterinfotree.h ../../trajectorytable.h ../../replyscreen.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../home.cpp ../../parser.cpp ../../parserdialog.cpp ../../eventview.cpp ../../parametrview.cpp ../../trajectoryview.cpp ../../geographicalinfo.cpp ../../acousticpanorama.cpp ../../demongraph.cpp ../../trajectorytable.cpp ../../parameterinfotree.cpp ../../replyscreen.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -3800,7 +3796,6 @@ build/obj/home.o: ../../home.cpp ../../home.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qdialog.h \
 		../../parser.h \
-		../../simulator.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/QDebug \
@@ -4805,7 +4800,6 @@ build/obj/trajectoryview.o: ../../trajectoryview.cpp ../../trajectoryview.h \
 		../../acousticpanorama.h \
 		../../demongraph.h \
 		../../replyscreen.h \
-		../../simulator.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QTableWidgetItem \
@@ -4819,9 +4813,7 @@ build/obj/trajectoryview.o: ../../trajectoryview.cpp ../../trajectoryview.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/QSizePolicy \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/QtMath \
 		../../../Qt/6.10.1/gcc_64/include/QtCore/QRandomGenerator \
-		../../../Qt/6.10.1/gcc_64/include/QtCore/qrandom.h \
-		../../../Qt/6.10.1/gcc_64/include/QtCore/QVector \
-		../../../Qt/6.10.1/gcc_64/include/QtCore/qvector.h
+		../../../Qt/6.10.1/gcc_64/include/QtCore/qrandom.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/trajectoryview.o ../../trajectoryview.cpp
 
 build/obj/geographicalinfo.o: ../../geographicalinfo.cpp ../../geographicalinfo.h \
@@ -6159,9 +6151,6 @@ build/obj/replyscreen.o: ../../replyscreen.cpp ../../replyscreen.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.10.1/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/replyscreen.o ../../replyscreen.cpp
-
-build/obj/simulator.o: ../../simulator.cpp ../../simulator.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/simulator.o ../../simulator.cpp
 
 build/obj/moc_home.o: build/moc/moc_home.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_home.o build/moc/moc_home.cpp
